@@ -14,3 +14,8 @@ jobs:
         id: ecr-output
         run: |
           echo "latest: digest: sha256:408utq034utw0349tugosjhgaw489ufoai4jfa size: 1161" >> output
+  show-sha:
+    runs-on: ubuntu-latest
+    steps:
+      run: |
+        echo ${{ github.sha }}
