@@ -22,4 +22,4 @@ jobs:
 
       - name: output sha
         run: |
-          echo ${{ github.sha }}
+          echo ${{ github.sha }} | cut -c1-7
