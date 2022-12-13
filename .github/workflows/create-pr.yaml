@@ -16,14 +16,18 @@ jobs:
           echo "latest: digest: sha256:408utq034utw0349tugosjhgaw489ufoai4jfa size: 1161" >> output
   show-sha:
     runs-on: ubuntu-latest
+    outputs:
+      short-sha: ${{ steps.output-sha.outputs.SHORT_SHA}}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: output sha
+        id: output-sha
         run: |
-          SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-7)
-          echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
+          SHORT_SHA_TEMP=$(echo ${{ github.sha }} | cut -c1-7)
+          echo "SHORT_SHA=$SHORT_SHA_TEMP" >> $GITHUB_OUTPUT
 
       - name: get env
         run: |
@@ -36,4 +40,4 @@ jobs:
         uses: actions/checkout@v3
       - name: get env prev section
         run: |
-          echo $SHORT_SHA
+          echo ${{needs.show-sha.outputs.SHORT_SHA}}
