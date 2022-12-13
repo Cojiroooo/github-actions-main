@@ -22,4 +22,17 @@ jobs:
 
       - name: output sha
         run: |
-          echo ${{ github.sha }} | cut -c1-7
+          SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-7)
+          echo "SHORT_SHA=${{SHORT_SHA}}" >> $GITHUB_ENV
+
+      - name: get env
+        run: |
+          echo $SHORT_SHA
+  get-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: get env prev section
+        run: |
+          echo $SHORT_SHA
