@@ -17,5 +17,9 @@ jobs:
   show-sha:
     runs-on: ubuntu-latest
     steps:
-      run: |
-        echo ${{ github.sha }}
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: output sha
+        run: |
+          echo ${{ github.sha }}
