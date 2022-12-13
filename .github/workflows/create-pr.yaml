@@ -1,0 +1,16 @@
+name: Create PR
+
+on: push
+
+jobs:
+  extract-digest:
+    name: Extract digest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Output ecr digest to output file
+        id: ecr-output
+        run: |
+          echo "latest: digest: sha256:408utq034utw0349tugosjhgaw489ufoai4jfa size: 1161" >> output
