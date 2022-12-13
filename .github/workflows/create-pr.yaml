@@ -39,6 +39,33 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+
       - name: get env prev section
         run: |
           echo "${{needs.show-sha.outputs.short-sha}}"
+
+  change-other-repo:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+    steps:
+      - name: checkout other repo
+        uses: actions/checkout@v3
+        with:
+          repository: Cojiroooo/github-actions-sub
+
+      - name: create new file
+        run: |
+          echo "created by github actions" >> text.txt
+
+      - name: create pr
+        run: |
+          gh pr create \
+          --head "new_branch" \
+          --base "main" \
+          --title "pr created by github acitions" \
+          --body "body"
+
+
+
+
