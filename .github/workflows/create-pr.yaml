@@ -56,7 +56,7 @@ jobs:
           ssh-key: ${{ secrets.PUSH_TO_GITHUB_ACTIONS_SUB }}
 
       - name: change yaml
-        uses: mikefarh/yq@master
+        uses: mikefarah/yq@master
         with:
           cmd: IMAGE_TAG=${{needs.show-sha.outputs.short-sha}} yq -i '.spec.containers.image="xxxxxxx.dkr.ecr.region.amazonaws.com/yyyyy@strenv(IMAGE_TAG)"' ./stage/deploy.yml
 
