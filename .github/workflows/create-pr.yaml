@@ -59,7 +59,7 @@ jobs:
       - name: change yaml
         uses: mikefarah/yq@master
         with:
-          cmd: IMAGE_TAG=${{needs.show-sha.outputs.short-sha}} yq -i '.spec.containers.image="xxxxxxx.dkr.ecr.region.amazonaws.com/yyyyy@${{env.IMAGE_TAG}}"' ./stage/deploy.yml
+          cmd: yq -i '.spec.containers.image="xxxxxxx.dkr.ecr.region.amazonaws.com/yyyyy@${{needs.show-sha.outputs.short-sha}}"' ./stage/deploy.yml
 
 
       - name: create new file
