@@ -21,6 +21,10 @@ jobs:
           app_id: ${{ secrets.CREATE_PR_BOT_APP_ID }}
           private_key: ${{ secrets.CREATE_PR_BOT_PRIVATE_KEY }}
 
+      - name: create new file
+        run: |
+          echo "created by github actions" >> text1.txt
+
       - name: create pr
         uses: peter-evans/create-pull-request@v4
         with:
