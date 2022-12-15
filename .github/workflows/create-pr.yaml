@@ -82,7 +82,7 @@ jobs:
           commiter: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: release/update-image-tag-${{CURRENT_DATE}}
+          branch: release/update-image-tag-${{ env.CURRENT_DATE }}
           base: main
           delete-branch: true
           title: |
