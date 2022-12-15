@@ -63,6 +63,9 @@ jobs:
           TZ: 'Asia/Tokyo'
         run: echo "CURRENT_DATE=$(date + '%Y-%m-%d')" >> $GITHUB_ENV
 
+      - name: echo current date
+        run: echo ${{ env.CURRENT_DATE }}
+
       # - name: create pr
       #   run: |
       #     gh pr create \
@@ -79,7 +82,7 @@ jobs:
           commiter: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: create-pull-request/release/${{ env.ENV }}
+          branch: release/update-image-tag-${{CURRENT_DATE}}
           base: main
           delete-branch: true
           title: |
