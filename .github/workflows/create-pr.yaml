@@ -46,6 +46,7 @@ jobs:
 
   change-other-repo:
     runs-on: ubuntu-latest
+    needs: show-sha
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
     steps:
