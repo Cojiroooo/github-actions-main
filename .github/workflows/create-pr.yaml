@@ -69,7 +69,7 @@ jobs:
         env:
           TZ: 'Asia/Tokyo'
         run: |
-          echo date
+          echo $(date)
           echo $(date + '%Y-%m-%d')
           echo "CURRENT_DATE=$(date + '%Y-%m-%d')" >> $GITHUB_ENV
 
