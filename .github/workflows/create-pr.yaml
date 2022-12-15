@@ -72,7 +72,7 @@ jobs:
         run: |
           echo $(date)
           echo $(date +'%Y-%m-%d')
-          echo "CURRENT_DATE=$(date + '%Y-%m-%d')" >> $GITHUB_ENV
+          echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
       - name: echo current date
         run: echo ${{ env.CURRENT_DATE }}
