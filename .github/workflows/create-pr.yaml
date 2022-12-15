@@ -61,7 +61,10 @@ jobs:
       - name: get current date
         env:
           TZ: 'Asia/Tokyo'
-        run: echo "CURRENT_DATE=$(date + '%Y-%m-%d')" >> $GITHUB_ENV
+        run: |
+          echo date
+          echo $(date + '%Y-%m-%d')
+          echo "CURRENT_DATE=$(date + '%Y-%m-%d')" >> $GITHUB_ENV
 
       - name: echo current date
         run: echo ${{ env.CURRENT_DATE }}
@@ -74,7 +77,7 @@ jobs:
       #     --title "pr created by github acitions" \
       #     --body "body"
       - name: create pr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: |
