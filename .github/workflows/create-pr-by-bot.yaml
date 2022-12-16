@@ -27,6 +27,11 @@ jobs:
           repository: Cojiroooo/github-actions-sub
           token: ${{ steps.generate-token.outputs.token }}
 
+      - name: change yaml
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq -i '.spec.containers.['image']="xxxxxxx.dkr.ecr.region.amazonaws.com/yyyyy:1111"' ./stage/deploy-name.yml
+
       - name: create new file
         run: |
           echo "created by github actions" >> text1.txt
