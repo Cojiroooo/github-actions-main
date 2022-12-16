@@ -36,16 +36,16 @@ jobs:
         run: |
           echo "created by github actions" >> text1.txt
 
-      # - name: check env
-      #   run: |
-      #     echo "TEST1=testest1" >> $GITHUB_ENV
-      #     echo "TEST2=testest2" >> $GITHUB_ENV
+      - name: check env
+        run: |
+          echo "TEST1=testest1" >> $GITHUB_ENV
+          echo "TEST2=testest2" >> $GITHUB_ENV
 
-      # - name: echo env
-      #   run: |
-      #     echo $TEST1
-      #     echo $TEST2
-      #     echo "TEST3=$TEST1/$TEST2"
+      - name: echo env
+        run: |
+          echo $TEST1
+          echo $TEST2
+          echo "TEST3=$TEST1/$TEST2/$TOKEN"
 
       - name: create pr
         uses: peter-evans/create-pull-request@v4
