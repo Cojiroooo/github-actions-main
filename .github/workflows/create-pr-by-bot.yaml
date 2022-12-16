@@ -27,8 +27,10 @@ jobs:
 
       - name: check env
         run: |
+          TEST_X=testest
           echo "TEST1=testest1" >> $GITHUB_ENV
           echo "TEST2=testest2" >> $GITHUB_ENV
+          echot $TEST_X
 
       - name: echo env
         run: |
