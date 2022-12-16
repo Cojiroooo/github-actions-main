@@ -31,8 +31,8 @@ jobs:
           token: ${{ steps.generate-token.outputs.token }}
           commit-message: |
              update(stage): update image tag
-          # commiter: GitHub <noreply@github.com>
-          # author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          commiter: GitHub <noreply@github.com>
+          author: GitHub <noreply@github.com>
           signoff: false
           branch: release/bot-update-image-tag-${{ env.CURRENT_DATE }}
           base: main
