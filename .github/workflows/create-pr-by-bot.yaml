@@ -8,10 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout other repo
-        uses: actions/checkout@v3
-        with:
-          repository: Cojiroooo/github-actions-su
+
 
       - name: Generate token
         uses: tibdex/github-app-token@v1
@@ -19,6 +16,12 @@ jobs:
         with:
           app_id: ${{ secrets.CREATE_PR_BOT_APP_ID }}
           private_key: ${{ secrets.CREATE_PR_BOT_PRIVATE_KEY }}
+
+      - name: checkout other repo
+        uses: actions/checkout@v3
+        with:
+          repository: Cojiroooo/github-actions-sub
+          token: ${{ steps.generate-token.outputs.token }}
 
       - name: create new file
         run: |
