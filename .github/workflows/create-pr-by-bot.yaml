@@ -8,10 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: output secrets
-        run: |
-          echo "${{ secrets.CREATE_PR_BOT_APP_ID }}"
-
       - name: Generate token
         uses: tibdex/github-app-token@v1
         id: generate-token
@@ -23,8 +19,7 @@ jobs:
         env:
           TOKEN: ${{ steps.generate_token.outputs.token }}
         run: |
-          echo "The generated token is masked: ${TOKEN}"
-          echo ${{ steps.generate_token.outputs.token }}
+          echo "The generated token is masked: ${{ env.TOKEN }}"
 
       - name: checkout other repo
         uses: actions/checkout@v3
@@ -36,16 +31,16 @@ jobs:
         run: |
           echo "created by github actions" >> text1.txt
 
-      - name: check env
-        run: |
-          echo "TEST1=testest1" >> $GITHUB_ENV
-          echo "TEST2=testest2" >> $GITHUB_ENV
+      # - name: check env
+      #   run: |
+      #     echo "TEST1=testest1" >> $GITHUB_ENV
+      #     echo "TEST2=testest2" >> $GITHUB_ENV
 
-      - name: echo env
-        run: |
-          echo $TEST1
-          echo $TEST2
-          echo "TEST3=$TEST1/$TEST2"
+      # - name: echo env
+      #   run: |
+      #     echo $TEST1
+      #     echo $TEST2
+      #     echo "TEST3=$TEST1/$TEST2"
 
       - name: create pr
         uses: peter-evans/create-pull-request@v4
