@@ -30,7 +30,7 @@ jobs:
       - name: change yaml
         uses: mikefarah/yq@master
         with:
-          cmd: yq -i '.spec.containers.[] | select(.== "image")="xxxxxxx.dkr.ecr.region.amazonaws.com/yyyyy:1111")' ./stage/deploy-name.yml
+          cmd: yq -i '(.spec.containers.[] | select(.== "image"))="xxxxxxx.dkr.ecr.region.amazonaws.com/yyyyy:1111")' ./stage/deploy-name.yml
 
       - name: create new file
         run: |
