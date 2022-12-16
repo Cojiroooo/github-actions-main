@@ -47,6 +47,10 @@ jobs:
           echo $TEST2
           echo "TEST3=$TEST1/$TEST2/$TOKEN" >> $GITHUB_ENV
 
+      - name: echo env
+        run: |
+          echo $TEST3
+
       - name: create pr
         uses: peter-evans/create-pull-request@v4
         with:
