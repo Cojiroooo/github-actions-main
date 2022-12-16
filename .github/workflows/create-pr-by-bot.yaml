@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: output secrets
+        run: |
+          echo ${{ secrets.CREATE_PR_BOT_APP_ID }}
+          echo ${{ secrets.CREATE_PR_BOT_PRIVATE_KEY }}
+
       - name: Generate token
         uses: tibdex/github-app-token@v1
         id: generate-token
